@@ -4,8 +4,11 @@ import Avatar from "../Avatar";
 import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegiserModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import LoginModal from "../modals/LoginModal";
 const UserMenu = () => {
 const registerModal=useRegiserModal();
+const loginModal =useLoginModal();
 const [isOpen,SetIsOpen]=useState(false);
  const toggleOpen=useCallback(()=>{
 SetIsOpen((value)=>!value);
@@ -33,7 +36,7 @@ Airbnb your home
 
 <>
 <MenuItem 
- onClick={()=>{}}
+ onClick={loginModal.onOpen}
  label="Login"
 />
 <MenuItem 
