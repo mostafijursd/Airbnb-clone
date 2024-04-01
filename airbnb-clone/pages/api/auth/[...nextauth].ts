@@ -9,6 +9,7 @@ import prisma from "@/app/libs/primadb"
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
+  secret: process.env.NEXTAUTH_SECRET ,
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -59,7 +60,7 @@ export const authOptions: AuthOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  
 }
 
 export default NextAuth(authOptions);
