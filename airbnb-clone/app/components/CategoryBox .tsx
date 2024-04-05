@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { IconType } from 'react-icons';
 interface CategoryBoxProps{
     icon: IconType,
@@ -10,6 +11,8 @@ const CategoryBox:React.FC<CategoryBoxProps>  = ({
     label ,
    setected
 }) => {
+
+  const router=useRouter();
   return (
     <div  className={`
     flex 
