@@ -7,6 +7,7 @@ import { categories } from '../navbar/Categories';
 import CategoryInput from '../inputs/CategoryInput';
 import { FieldValues, useForm } from 'react-hook-form';
 import CountrySelect from '../inputs/CountrySelect';
+import dynamic from 'next/dynamic';
 
 
 
@@ -48,12 +49,18 @@ const RentModal = () => {
  });
 
  const category= watch('category');
+ const location= watch('location');
+
+ const Map =useMemo(()=>dynamic(()=>import('../Map'),{
+  ssr:false
+ }),[location])
 
   const setCustomValue=(id:string,value:any)=>{
     setValue(id,value,{
+      shouldValidate:true,
       shouldDirty:true,
-      shouldTouch:true,
-      shouldValidate:true
+      shouldTouch:true
+     
       
     })
   }
@@ -95,7 +102,7 @@ let bodyContent=(
     <div key={item.label} className=' col-span-1'>
       <CategoryInput
        onClick={(category)=>setCustomValue('category',category)}
-       setected={category== item.label}
+       setected={category=== item.label}
        label={item.label}
        icon={item.icon}
       />
@@ -107,7 +114,7 @@ let bodyContent=(
   </div>
 )
 
-if(step== STEPS.LOCATIO){
+if(step=== STEPS.LOCATIO){
   bodyContent=(
     <div className=' flex flex-col gap-8'>
       <Heading 
@@ -115,10 +122,12 @@ if(step== STEPS.LOCATIO){
        subtitle='Help guests find you!'
       />
       < CountrySelect
-      //  onClick={(category)=>setCustomValue("category",category)}
-      //  setected={category== item.label}
-      //  label={item.label}
-      //  icon={item.icon}
+      value={location}
+        onChange={(value)=>setCustomValue("location",value)}
+      />
+      <Map
+      center={location?.latlng}
+      
       />
     </div>
   )

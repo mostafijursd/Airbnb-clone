@@ -6,8 +6,8 @@ import  qs from 'query-string';
 
 interface CategoryBoxProps{
     icon: IconType,
-    label: string;
-    setected?:boolean
+    label: string,
+    setected?:boolean,
 }
 const CategoryBox:React.FC<CategoryBoxProps>  = ({
     icon:Icon,
