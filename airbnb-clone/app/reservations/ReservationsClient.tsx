@@ -19,7 +19,7 @@ const ReservationsClient:React.FC<ReservationsClientProps> = ({
 }) => {
   const router=useRouter();
 
-  const [deletingId,setDeletingId]=useState('');
+  const [deletingId,setDeletingId]=useState("");
 
   const onCancel= useCallback((id:string)=>{
      setDeletingId(id)
@@ -32,7 +32,7 @@ const ReservationsClient:React.FC<ReservationsClientProps> = ({
       toast.error("Samthing went wrong")
      })
      .finally(()=>{
-      setDeletingId('')
+      setDeletingId("")
      })
   },[router])
   return (
