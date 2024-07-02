@@ -19,7 +19,7 @@ const Search = () => {
  if(!locationValue){
    return getByValue(locationValue as string)?.label;
  }
- return 'Anywhere'
+ return 'Anywhere';
   },[getByValue,locationValue]);
 
   const durationLabel=useMemo(()=>{
@@ -55,7 +55,7 @@ const Search = () => {
     shadow-sm hover:shadow-md transition cursor-pointer ">
 <div className=" flex flex-row items-center justify-between">
 <div className=" text-sm font-semibold px-6">
-{locationLabel}
+Anywhere
 
 </div>
 <div className="hidden sm:block text-sm px-6 border-x-[1px] flex-1 text-center">
